@@ -87,22 +87,34 @@ function searchTags(post_id,callback){
 		}
 	});
 }
-
+/*
+Agrega una relacion tag-post
+recibe: 
+	tags: arreglo de tags a relacionar con el post
+	post: el post en el que se etiquetaron las tags
+*/
 function addTagstoPost(tags,post){
 	tagfile.searchTags(tags,function(ctag){
 		
 		for(var i=0;i<ctag.length;i++){
 			addTagtoPost({"tag_id":ctag[i].id,"post_id":post.id},function(res){
-				//console.log(res);
-			});/**/
+			});
 		}
 	});
 
 }
-
+/*
+Busqueda de los posts y tags más recientes. La búsqueda de post es de 7 y de tags a 20
+recibe:
+	callback: funcion a la cual enviar los resultados de las busquedas
+*/
 function searchPostsAndTags(callback){
+	//console.log("-buscandoposts");
 	postfile.searchSomePost(0,7,function(posts){
 
+		//console.log("--postencontrados"+posts);
+		//console.log("-buscando tags");
+		
 		tagfile.searchSomeTag(0,20,function(tags){
 			for (var i = 0;i< posts.length; i++) {
 			posts[i].author="Alberto";
@@ -112,7 +124,14 @@ function searchPostsAndTags(callback){
 		});
 	});
 }
-
+/*
+Busqueda de posts por etiqueta. Despliega cuales post fueron etiquetados
+recibe:
+	tag_id: el id del tag a buscar
+	callback: la funcion a la cual se va a enviar el resultado.
+regresa:
+	al callback un arreglo con los posts que cumplen con el criterio
+*/
 function searchPosts(tag_id,callback){
 	TagsInPostModel.find({"tag_id":tag_id},function(err,data){
 		//console.log(data);

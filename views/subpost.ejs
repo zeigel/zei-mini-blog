@@ -1,5 +1,6 @@
 <% layout('layout') -%>
 <% script('/js/alerta.js') -%>
+<% stylesheet('/css/forms.css') -%>
 
 <% stylesheet('css/main.css') -%>
 
@@ -12,13 +13,13 @@
 
 <% form_for("cpost", function(f){ %>
   <%- f.label_for("titulo") %><br />
-  <%- f.text_field("title") %><br /><br />
+  <%- f.text_field("title",{class:"rounded"}) %><br /><br />
   <%- f.label_for("texto") %><br />
-  <%- f.text_area("text",{class:'formta'}) %><br />
+  <%- f.text_area("text",{class:"rounded"}) %><br />
   <%- f.hidden_field("user_id", 1 )%>
   <%- f.label_for("tags") %><br />
-  <%- f.text_field("tags") %><br /><br />
-  <%- f.submit({class: 'button subbut'}) %>
+  <%- f.text_field("tags",{class:"rounded"}) %><br /><br />
+  <%- f.submit("Guardar Post",{class: 'button rounded'}) %>
 <% }) %>
 	
 <% if (typeof(test_value) != "undefined"){ %>

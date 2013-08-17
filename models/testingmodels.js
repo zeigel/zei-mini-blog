@@ -1,3 +1,4 @@
+//Archivo de prueba de comandos dado el hecho que deben importarse.
 var monfile = require("./mongoose.js");
 var mongoose= monfile.mongoose;
 var db= monfile.db;
@@ -7,7 +8,6 @@ var postfile = require("./post.js");
 var commentfile = require("./comment.js");
 var tagfile = require("./tag.js");
 var tipfile = require("./tagsinpost.js");
-
 
 
 

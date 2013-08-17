@@ -55,7 +55,7 @@ function createPost(data,callback){
 			myPostModel.date=new Date();
 			myPostModel.user_id=data.user_id;
 			myPostModel.save(function(errr){
-				console.log(errr);
+				//console.log(errr);
 				if(errr)
 					callback(false);
 				else{
@@ -78,7 +78,9 @@ regresa:
 	boolean si realizó o no la insersión.
 */
 function searchSomePost(from, to, callback){
+	//console.log("-post- buscando "+from+":"+to+" posts:");
 	PostModel.find().sort("-_id").skip(from).limit(to).exec(function(err,data){
+		//console.log("-postencontrados(?):"+err+" data:"+data);
 		if(data!=null){
 			callback(data);
 		}

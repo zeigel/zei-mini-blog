@@ -1,3 +1,4 @@
+//Modelo no implementado...
 var monfile = require("./mongoose.js");
 var mongoose= monfile.mongoose;
 var db= monfile.db;
@@ -11,16 +12,8 @@ var User= new mongoose.Schema({
 });
 var UserModel = db.model("User",User);
 
-/*
-* USUARIO
-*
-*
-*
-*/	
-
 /*Busqueda de usuarios. Si lo encuentra regresa el modelo.
-En caso constrario regresa falso.
-
+En caso contrario regresa falso.
 recibe: 
 	id : id del usuario
 	callback: función a la que regresa el resultado
@@ -65,7 +58,7 @@ function createUser(data,callback){
 					callback(true);
 			});
 		}else
-			console.log(false);
+			callback(false);
 	});
 }
 /*

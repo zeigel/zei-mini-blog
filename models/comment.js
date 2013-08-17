@@ -1,7 +1,8 @@
+//importando archivos de base de datos
 var monfile = require("./mongoose.js");
 var mongoose= monfile.mongoose;
 var db= monfile.db;
-
+//Especificacion del modelo para comment usando mongoose
 var Comment= new mongoose.Schema({
 	id:{ type: Number, min: 1},
 	name:{ type: String, min: 1, required: true},
@@ -23,7 +24,6 @@ regresa:
 function createComment(data,callback){
 
 	CommentModel.findOne({}, {}, { sort: { '_id' : -1 } }, function(err, comment) {
-		//console.log("comment: "+err+"/"+data);
 		var myCommentModel = new CommentModel();
 		if(comment!=null){
 			myCommentModel.id=comment.id+1;
