@@ -1,0 +1,26 @@
+<% layout('layout') -%>
+
+<% stylesheet('/../css/main.css') -%>
+<% stylesheet('/../css/post.css') -%>
+<% stylesheet('/../css/comment.css') -%>
+<% stylesheet('http://fonts.googleapis.com/css?family=Oswald:400,300') -%>
+<% stylesheet('http://fonts.googleapis.com/css?family=Abel') -%>
+
+<% block('header', "<div class='ititle'>BLOG</div>") -%>
+<% block('footer', "<p>Alberto Valencia</p>") -%>
+
+
+<%- partial('_post.ejs',{post : post}) %>
+Comentarios:<br><br>
+
+<% for (var i=0; i<comments.length;i++){ %>
+	<%- partial('_comment.ejs',{comment : comments[i]}) %>
+<% } %>
+
+<br>
+
+		<%- partial('_comment_form.ejs',{post:post,tagsofpost:tagsofpost}) %>
+	
+<% if (typeof(test_value) != "undefined"){ %>
+	<%= test_value %>
+<% } %>

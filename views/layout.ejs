@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>BLOG</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <%-scripts%>
+    <%-stylesheets%>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- styles -->
+    <link href="stylesheets/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+	
+
+	<div class="body">
+		<div>
+			<a href="/">
+      <%-blocks.header%>
+  </a>
+    </div>
+<div class="main-column">
+
+	<div class="posts" >
+		<%- body %>
+	    </div>
+</div>
+<div class="side-column">
+	<div class="post-box" >
+		<div class="textwrap">
+			<div class="btitle">Posts</div>
+			<% for(var i=0; i<posts.length;i++){ %>
+			·
+		 		<%- link_to(posts[i].title, "/post/"+posts[i].id) %>
+			<%}%>
+		</div>
+	</div>
+	<div class="tag-box">
+		<div class="textwrap">
+			<div class="btitle">Tags</div>
+		<% for(var i=0; i<tags.length;i++){ %>
+		·
+		 		<%- link_to(tags[i].text, "/tag/"+tags[i].id) %>
+			<%}%>
+		</div>
+	</div>
+
+</div>
+
+	    <footer>
+	      <%-blocks.footer%>
+	    </footer>
+    </div>
+    
+  </body>
+	
+
+</html>

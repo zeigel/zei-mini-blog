@@ -1,0 +1,20 @@
+{
+  "name": "miniblog",
+  "version": "0.0.0",
+  "description": "Blog creado para conocer la herramienta nodejs. Utiliza los siguientes modulos: -mongoose para modelado y manejo de base de datos; -express para el manejo del servidor; -express-helpers y locals para vistas y layout; -ejs para la formacion de las vistas.",
+  "main": "server.js",
+  "dependencies": {
+    "ejs": "~0.8.4",
+    "ejs-locals": "~1.0.2",
+    "express": "~3.3.5",
+    "express-helpers": "~1.3.1",
+    "mongoose": "~3.6.17"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Alberto Valencia",
+  "license": "BSD"
+}

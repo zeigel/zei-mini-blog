@@ -1,0 +1,26 @@
+<% layout('layout') -%>
+<% script('/js/alerta.js') -%>
+
+<% stylesheet('/../css/main.css') -%>
+
+<% stylesheet('http://fonts.googleapis.com/css?family=Oswald:400,300') -%>
+<% stylesheet('http://fonts.googleapis.com/css?family=Abel') -%>
+<% stylesheet('/../css/post.css') -%>
+<% block('header', "<div class='ititle'>BLOG</div>") -%>
+<% block('footer', "<p>Alberto Valencia</p>") -%>
+
+
+
+<% if (typeof(myposts) != "undefined") {%>
+	<% for(var i=0; i<myposts.length;i++){ %>
+		<%- partial('_post.ejs',{post : myposts[i]}) %>
+	<%}%>
+<%}else{%>
+	<div class="error-notice">
+		<p>No hay resultados</p>
+	</div>
+<%}%>
+	
+<% if (typeof(test_value) != "undefined"){ %>
+	<%= test_value %>
+<% } %>

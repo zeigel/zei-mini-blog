@@ -1,0 +1,26 @@
+<% layout('layout') -%>
+<% script('/js/alerta.js') -%>
+
+<% stylesheet('css/main.css') -%>
+
+<% stylesheet('http://fonts.googleapis.com/css?family=Oswald:400,300') -%>
+<% stylesheet('http://fonts.googleapis.com/css?family=Abel') -%>
+
+<% block('header', "<div class='ititle'>BLOG</div>") -%>
+<% block('footer', "<p>Alberto Valencia</p>") -%>
+
+
+<% form_for("cpost", function(f){ %>
+  <%- f.label_for("titulo") %><br />
+  <%- f.text_field("title") %><br /><br />
+  <%- f.label_for("texto") %><br />
+  <%- f.text_area("text",{class:'formta'}) %><br />
+  <%- f.hidden_field("user_id", 1 )%>
+  <%- f.label_for("tags") %><br />
+  <%- f.text_field("tags") %><br /><br />
+  <%- f.submit({class: 'button subbut'}) %>
+<% }) %>
+	
+<% if (typeof(test_value) != "undefined"){ %>
+	<%= test_value %>
+<% } %>

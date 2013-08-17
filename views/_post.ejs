@@ -1,0 +1,33 @@
+
+
+<div class="post">
+	<div class="textwrap">
+		<div class="post-title">
+			<%- link_to(post.title, "/post/"+post.id) %>
+		</div>
+
+		<div class="post-header" >
+			<div class="post-author" >
+				<%= post.author%>
+			</div>
+			<div class="post-date" >
+				<%=post.date%>
+			</div>
+		</div>
+
+		<div class="post-text">
+			<%= post.text %>
+		</div>
+
+
+		<% if (typeof(tagsofpost) != "undefined"&&tagsofpost.length>0){ %>
+			<div class="post-tags">
+				Etiquetado en:
+					<%for (var i=0; i<tagsofpost.length;i++){%>
+						<%- link_to(tagsofpost[i].text, "/tag/"+tagsofpost[i].id) %>
+					<% } %>
+				
+			</div>
+		<% } %>
+	</div>
+</div>
