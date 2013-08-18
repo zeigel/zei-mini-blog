@@ -51,13 +51,13 @@ function inicio(req,res){
 	});
 }
 
-function createPost(req,res){	
+function createPost(req,res){
 	if(req.session.logged){	
 		TIP.searchPostsAndTags(function(posts,tags){
 			for (var i = 0;i< posts.length; i++) {
 				posts[i].author="Alberto";
 			}
-			req.session.lastPage = '/';
+			req.session.lastPage = '/cpost';
 			res.render("subpost.ejs", {
 				posts:posts,
 				tags:tags,
@@ -182,7 +182,7 @@ app.get("/noma",function(req,res){
 
 //inicio de escucha remoto. se especifica el puerto
 var port = process.env.PORT || 5001;
-console.log(port);
+//console.log(port);
 //esperamos a establecer la conexion con la base de datos
 mongoose.connection.on('open', function (ref) {
   console.log('Connected to mongo server.');

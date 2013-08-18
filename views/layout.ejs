@@ -39,6 +39,7 @@
 			<% for(var i=0; i<posts.length;i++){ %>
 			·
 		 		<%- link_to(posts[i].title, "/post/"+posts[i].id) %>
+		 		<br/>
 			<%}%>
 		</div>
 	</div>
@@ -51,7 +52,7 @@
 			<%}%>
 		</div>
 	</div>
-
+	<%- link_to("Crear post", "/cpost") %>
 </div>
 
 	    <footer>
