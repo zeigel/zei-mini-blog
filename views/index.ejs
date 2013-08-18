@@ -18,7 +18,48 @@
 		<%- partial('_post.ejs',{post : posts[i]}) %>
 	<%}%>
 <%}%>
-	
+<div id="more-posts"></div>
+<center>
+<div id="next" style="cursor:pointer" alt="7">Cargar más</div> 
+	</center>
 <% if (typeof(test_value) != "undefined"){ %>
 	<%= test_value %>
 <% } %>
+
+<% script('http://code.jquery.com/jquery-1.10.2.min.js') -%>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#next").click(function(){
+		//alert( "/nextpost/"+$(this).attr('alt'));
+		$.ajax({
+	        url: "/nextpost/"+$("#next").attr('alt'),
+	        type:'GET',
+	        cache: false,
+	        timeout: 5000,
+	        success: function(data) {
+	        	if(data.length>0){
+	        		var nvospost="";
+	        		for(var i=0; i<data.length;i++){
+//begin
+nvospost+='<div class="post"><div class="textwrap"><div class="post-title"><a href="/post/'+data[i].id+'">'+data[i].title+'</a></div><div class="post-header" ><div class="post-author" >			'+data[i].author+'			</div><div class="post-date" >'+data[i].date+'			</div></div><div class="post-text">	'+data[i].text+'</div></div></div>';
+//end
+}
+					var np=7+parseInt($("#next").attr('alt'));
+					$("#next").attr('alt',np)
+	            	$("#more-posts").append(nvospost);
+	        	}
+	            else{
+	            	$("#next").css("display","none");
+	            }
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) {
+	        	console.log(myurl);
+	            alert('error ' + textStatus + " " + errorThrown);
+	        }
+	    });
+	});
+
+
+});
+</script>
+

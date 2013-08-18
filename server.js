@@ -173,12 +173,28 @@ function searchTaggedPosts(req,res){
 	});
 }
 
-app.get("/noma",function(req,res){
-	Tag.searchTag("server",function(tag){
-		console.log(tag);
-	});
-	res.redirect('/login');
-});
+app.get("/nextpost/:last",deliverNextPosts);
+
+function deliverNextPosts(req,res){
+	var posts=[];
+	if(req.params.last){
+		var last= req.params.last;
+		Post.searchSomePost(last,5,function(postsRec){
+			if(postsRec){
+				posts=postsRec;
+			}
+
+			res.send(posts);
+
+		});
+	}
+	else
+	{
+		res.send(posts);
+	}
+
+
+}
 
 //inicio de escucha remoto. se especifica el puerto
 var port = process.env.PORT || 5001;
